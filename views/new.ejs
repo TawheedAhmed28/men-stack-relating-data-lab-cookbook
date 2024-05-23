@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Item</title>
+</head>
+<body>
+    <h1>Add a new item!</h1>
+    <form action="/users/<%= user._id %>/foods" method="POST">
+        <label for="name">Food name:</label>
+        <input type="text" name="name" id="name">
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category">
+        <label for="vegetarian">Vegetarian?</label>
+        <input type="checkbox" name="isVegetarian" id="vegetarian">
+        <label for="vegan">Vegan?</label>
+        <input type="checkbox" name="isVegan" id="vegan">
+        <button type="submit">Add item</button>
+    </form>
+</body>
+</html>
