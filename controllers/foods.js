@@ -4,7 +4,9 @@ const router = express.Router();
 const User = require('../models/user.js');
 
 router.get("/", (req, res) => {
-    res.render("foods/index.ejs")
+    res.render("foods/index.ejs", {
+        pantry: res.locals.user.pantry
+    })
 })
 
 router.get("/new", (req, res) => {
@@ -30,7 +32,9 @@ router.post("/", async (req, res) => {
     const currentUser = await User.findById(req.session.user._id)
     currentUser.pantry.push({ ...req.body, isVegetarian: isVegetarian, isVegan: isVegan })
     await currentUser.save()
-    res.render("foods/index.ejs")
+    res.render("foods/index.ejs", {
+        pantry: currentUser.pantry
+    })
     } catch (error) {
         console.log(error.message)
         res.redirect("/")
